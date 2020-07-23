@@ -20,16 +20,19 @@ function App() {
   const addTodoSubmit = (e) => {
     e.preventDefault();
 
-    dispatch({
-      type: ADD_TODO,
-      payload: newTodo,
-    });
+    if (newTodo.length > 0) {
+      dispatch({
+        type: ADD_TODO,
+        payload: newTodo,
+      });
+    }
 
     setNewTodo("");
   };
 
   return (
     <div>
+      <h1>Reducer Todo App</h1>
       <TodoForm
         handleChanges={handleChanges}
         addTodoSubmit={addTodoSubmit}
