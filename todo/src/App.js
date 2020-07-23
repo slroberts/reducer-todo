@@ -4,6 +4,7 @@ import {
   initialTodoState,
   ADD_TODO,
   TOGGLE_COMPLETED,
+  CLEAR_COMPLETED,
 } from "../src/reducers/";
 import TodoItem from "./components/TodoItem";
 import TodoForm from "./components/TodoForm";
@@ -39,14 +40,20 @@ function App() {
           <TodoItem
             key={todo.id}
             todo={todo}
-            onClick={() => {
+            completed={todo.completed}
+            itemCompleted={() => {
               dispatch({
                 type: TOGGLE_COMPLETED,
+                id: todo.id,
               });
             }}
           />
         );
       })}
+
+      <button onClick={() => dispatch({type: CLEAR_COMPLETED})}>
+        Clear Completed
+      </button>
     </div>
   );
 }
